@@ -1,0 +1,11 @@
+#!/bin/bash
+#PBS -N Long_early
+#PBS -j oe
+#PBS -l select=1:ncpus=2:mem=10gb -l place=free
+#PBS -m abe
+#PBS -M phillevn@gmail.com
+
+
+cd ${PBS_O_WORKDIR}
+module load gcc/9.2.0
+R --file=/ddn/home2/r2725/projects/jeannette/src_code/genotype_phenotype_id.R
