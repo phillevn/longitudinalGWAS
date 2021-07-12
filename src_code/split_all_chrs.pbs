@@ -22,7 +22,7 @@ module load gcc/9.2.0
 
 # /ddn/home2/r2725/apps/htslib-1.12/bin/tabix -p vcf /ddn/home2/r2725/projects/jeannette/data/chr1.dose.vcf.gz
 
-for i in {4..20}; do
+for i in {1..22}; do
 
 	cd /ddn/home2/r2725/projects/jeannette/data/
 
