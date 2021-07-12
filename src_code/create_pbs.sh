@@ -2,7 +2,7 @@
 outDIR="/ddn/home2/r2725/projects/jeannette/data/"
 email="phillevn@gmail.com"
 
-for i in {1..1};
+for i in {1..22};
         do
                 cd ${outDIR}chr${i}_data/subset_chro${i}_AA_filtered
                         for string in *.R;
