@@ -1,10 +1,20 @@
 #!/bin/bash
-#PBS -N chr22_filt
+#PBS -N split_chr
 #PBS -j oe
 #PBS -l select=1:ncpus=3:mem=32gb -l place=free
 #PBS -m abe
 #PBS -M phillevn@gmail.com
 
+# We suppose that the genotype data vcf is stored in the directory /ds/home/r1952/TOPMED_GWAS/AA/ for African American and /ds/home/r1952/TOPMED_GWAS/EA/ for European Amerfican
+# and the file names in the format chr${i}.dose.vcf.gz
+
+# We want to store the filtered data in the directory /ddn/home2/r2725/projects/jeannette/data/ for each chromosome with directory name chr${i}_data and file name subset_chro${i}_AA.vcf.gz for AA and subset_chro${i}_EA.vcf.gz for EA
+
+# Plink2 is used for filtered data with maf and max-maf since it is faster than Plink1.9, however, we must use Plink1.9 for fgwas function program
+
+# Since our sample for AA is around 3000, we split the whole set of snps into smaller set  of size 1,000,000 and since sample size for EA  is around 10,000 we split the whole snps into subsets with  500,000 snps each for faster parallel submittion jobs 
+
+# You may need to make index file of vcf.gz file first if you have not done so, or you just un comment the 3rd code line below to make the index by using tablix program 
 
 cd ${PBS_O_WORKDIR}
 

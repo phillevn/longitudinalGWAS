@@ -47,6 +47,9 @@ file.phe.cov_early_AA <- file.phe.cov_early_AA %>% mutate(X_2 = if_else(is.na(X_
 	mean(file.phe.cov_early_AA$X_7,na.rm = TRUE), X_7), X_8 = if_else(is.na(X_8), mean(file.phe.cov_early_AA$X_8,na.rm = TRUE), X_8), X_9 = if_else(is.na(X_9), mean(file.phe.cov_early_AA$X_9,na.rm = TRUE), X_9), X_10 = if_else(is.na(X_10), 
 	mean(file.phe.cov_early_AA$X_10,na.rm = TRUE), X_10), X_11 = if_else(is.na(X_11), mean(file.phe.cov_early_AA$X_11,na.rm = TRUE), X_11))
 # Femail is 0, maile is 1
+file.phe.long_early_AA[1:nrow(file.phe.long_early_AA),2:5] <- (is.na(file.phe.long_early_AA)[1:nrow(file.phe.long_early_AA),2:5])*rowMeans(file.phe.long_early_AA[1:nrow(file.phe.long_early_AA),2:5], na.rm=TRUE)+ 
+	replace(file.phe.long_early_AA[1:nrow(file.phe.long_early_AA), 2:5], is.na(file.phe.long_early_AA[1:nrow(file.phe.long_early_AA),2:5]), rnorm(1))
+
 
 write_csv(file.phe.long_early_AA, "/ddn/home2/r2725/projects/jeannette/data/file.phe.long_early_AA.csv")
 write_csv(file.phe.time_early_AA, "/ddn/home2/r2725/projects/jeannette/data/file.phe.time_early_AA.csv")
@@ -70,6 +73,12 @@ file.phe.cov_early_EA <- file.phe.cov_early_EA %>% mutate(X_2 = if_else(is.na(X_
         mean(file.phe.cov_early_EA$X_10,na.rm = TRUE), X_10), X_11 = if_else(is.na(X_11), mean(file.phe.cov_early_EA$X_11,na.rm = TRUE), X_11))
 # Femail is 0, maile is 1
 
-write_csv(file.phe.long_early_EA[1:2000,], "/ddn/home2/r2725/projects/jeannette/data/file.phe.long_early_EA.csv")
-write_csv(file.phe.time_early_EA[1:2000,], "/ddn/home2/r2725/projects/jeannette/data/file.phe.time_early_EA.csv")
-write_csv(file.phe.cov_early_EA[1:2000,], "/ddn/home2/r2725/projects/jeannette/data/file.phe.cov_early_EA.csv")
+#ind <- which(is.na(file.phe.long_early_EA[1:nrow(file.phe.long_early_EA),2:5]), arr.ind=TRUE)
+#file.phe.long_early_EA[1:nrow(file.phe.long_early_EA),2:5][ind] <- rowMeans(file.phe.long_early_EA[1:nrow(file.phe.long_early_EA),2:5],  na.rm = TRUE)[ind[,1]] + rnorm(1)
+
+file.phe.long_early_EA[1:nrow(file.phe.long_early_EA),2:5] <- (is.na(file.phe.long_early_EA)[1:nrow(file.phe.long_early_EA),2:5])*rowMeans(file.phe.long_early_EA[1:nrow(file.phe.long_early_EA),2:5], na.rm=TRUE)+
+        replace(file.phe.long_early_EA[1:nrow(file.phe.long_early_EA), 2:5], is.na(file.phe.long_early_EA[1:nrow(file.phe.long_early_EA),2:5]), rnorm(1))
+
+write_csv(file.phe.long_early_EA, "/ddn/home2/r2725/projects/jeannette/data/file.phe.long_early_EA.csv")
+write_csv(file.phe.time_early_EA, "/ddn/home2/r2725/projects/jeannette/data/file.phe.time_early_EA.csv")
+write_csv(file.phe.cov_early_EA, "/ddn/home2/r2725/projects/jeannette/data/file.phe.cov_early_EA.csv")
