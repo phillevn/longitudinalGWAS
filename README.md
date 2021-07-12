@@ -1,6 +1,6 @@
 # longitudinalGWAS
 
-This is a pipline for running longitudinal GWAS study on HPC with pbs language. The analysis is based one fGWAS method by Wang at https://github.com/wzhy2000/fGWAS
+This is a pipline for running longitudinal GWAS study on HPC with pbs language (it is easy to convert to slurm or others if you need). The analysis is based one fGWAS method by Wang at https://github.com/wzhy2000/fGWAS
 
 You need to install the following tools besides fGWAS program at the above website. 
 + plink2.0
